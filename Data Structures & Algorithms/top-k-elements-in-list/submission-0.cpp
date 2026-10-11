@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        std::vector<int> result;
+
+        std::map<int,int> mp;
+        for(const int& x : nums){
+            mp[x]++;
+        }
+
+        vector<pair<int,int>> v(mp.begin(), mp.end());
+
+        sort(v.begin(), v.end(), [](auto &a, auto &b){
+            return a.second > b.second;
+        });
+        
+        for(int i = 0; i < k; i++){
+            result.push_back(v[i].first);
+        }
+        return result;
+
+
+    }
+};
